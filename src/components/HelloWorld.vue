@@ -1,58 +1,32 @@
-<!--
- * @Description: 
- * @Author: sunjr
- * @Date: 2022-04-07 17:28:08
- * @FilePath: \vue3_vite_ts_demo\vue3.0_demo1\src\components\HelloWorld.vue
- * @LastEditTime: 2022-07-16 16:17:05
- * @LastEditors: sunjr
--->
-<script setup lang="ts">
-import { ref, Ref } from 'vue'
+<template>
+  <div>{{ sean }}</div>
+  <button @click="onchange">change</button>
+</template>
 
-defineProps<{ msg: string }>()
+<script setup lang='ts'>
+import { ref } from 'vue';
 
-const count = ref(0);
-
-console.log("count", count);
-console.log("count", count.value);
-
-let message: Ref<string> = ref('true');
-
-const changeMes = () => {
-  message.value = 'fake';
-  console.log('message', message);
+enum Gender {
+  male,
+  female
 }
-
-
-type Cls = {
-  testA: boolean,
-  testB: boolean
+interface Man {
+  name: string;
+  age: number;
+  sex: Gender;
 }
+let sean = ref<Man>({
+  name: 'sean',
+  age: 23,
+  sex: Gender.male
+})
 
-const cls: Cls = {
-  testA: true,
-  testB: false
+const onchange = (): void => {
+  sean.value.age = 24;
+  console.log('sean', sean);
 }
 </script>
 
-<template>
-  <h1>{{ msg }}</h1>
-  <br/>
-  <div :class="cls"> test cls </div>
-  <br/>
-  <input v-model="count" type="number">
-  {{ count }}
-  <br/>
-  <button @click="changeMes">changeMes</button>
-  {{ message }}
-</template>
-
 <style scoped>
-.testA {
-  color: pink;
-}
 
-.testB {
-  border: 1px solid red;
-}
 </style>

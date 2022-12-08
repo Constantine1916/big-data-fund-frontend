@@ -1,17 +1,31 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "esnext", // ESNext 是一个动态的概念，指的是 ECMAScript 的下一个版本。所以我们在配置中写ESNext肯定是包含ES6的语法，因为ES6早就发布了。
     "useDefineForClassFields": true,
-    "module": "esnext",
+    "module": "esnext", // commonjs amd ES6 等
     "moduleResolution": "node",
-    "strict": true,
+    "strict": false, // 严格模式 开启后 滥用类型赋值等会报错
     "jsx": "preserve",
     "sourceMap": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,
-    "lib": ["esnext", "dom"]
+    "allowJs": true, // 是否允许编译js文件
+    "lib": [
+      "esnext",
+      "dom"
+    ]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue"
+  ], // 编译包含的这些文件
+  // "exclude: []" 编译不包含[]的文件
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }
